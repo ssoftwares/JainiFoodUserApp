@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "158309581779",
+    "firebase_url": "https://jaini-food-user-app.firebaseio.com",
+    "project_id": "jaini-food-user-app",
+    "storage_bucket": "jaini-food-user-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158309581779:android:0847324fca4dd71d97e526",
+        "android_client_info": {
+          "package_name": "com.ssoftwares.jaini.rider"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158309581779-1tqrc70jan7i9onp6c73tsovq669unfj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ssoftwares.jaini.rider",
+            "certificate_hash": "61f09ac60406c6c104502ee840e23c40e5a5db75"
+          }
+        },
+        {
+          "client_id": "158309581779-68vst7th1a85tedrh7ng11n5a972eopd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeNS6Hdb0hhFJRZCn2pTArlpfBbruNN0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158309581779-68vst7th1a85tedrh7ng11n5a972eopd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
