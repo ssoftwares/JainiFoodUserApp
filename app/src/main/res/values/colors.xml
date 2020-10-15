@@ -13,4 +13,8 @@
     <color name="trans_black">#3C000000</color>
     <color name="dark_gary">#B1B1B1</color>
     <color name="green">#4CAF50</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="backgroundgray">#f2f2f2</color>
+    <color name="red">#FF000E</color>
+
 </resources>

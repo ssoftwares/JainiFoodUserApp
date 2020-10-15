@@ -64,7 +64,7 @@
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
             android:background="@drawable/bg_editfield"
-            android:hint="Email"
+            android:hint="Email / Mobile"
             android:gravity="end|center_vertical"
             android:textAlignment="viewStart"
             android:singleLine="true"

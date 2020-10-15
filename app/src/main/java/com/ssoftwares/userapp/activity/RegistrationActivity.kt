@@ -90,13 +90,16 @@ class RegistrationActivity :BaseActivity() {
                     )*/
                     Common.showErrorFullMsg(this@RegistrationActivity,resources.getString(R.string.validation_valid_cpassword))
                 }else{
+
                     val hasmap= java.util.HashMap<String, String>()
                     hasmap.put("name",edFullName.text.toString())
                     hasmap.put("email",edEmail.text.toString())
                     hasmap.put("mobile",edMobile.text.toString())
                     hasmap.put("password",edPassword.text.toString())
                     if(Common.isCheckNetwork(this@RegistrationActivity)){
-                        callApiRegistration(hasmap)
+                        val intent = Intent(this, OtpActivity::class.java);
+                        intent.putExtra("data" , hasmap);
+                        startActivity(intent);
                     }else{
                         Common.alertErrorOrValidationDialog(this@RegistrationActivity,resources.getString(R.string.no_internet))
                     }

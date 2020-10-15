@@ -2,9 +2,12 @@ package com.ssoftwares.userapp.activity
 
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.content.ActivityNotFoundException
 import android.content.BroadcastReceiver
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.Window
@@ -115,6 +118,16 @@ class DashboardActivity: BaseActivity() {
                     finish()
                 }
 
+            }
+            R.id.rl_instagram->{
+                val uri = Uri.parse("https://www.instagram.com/jainifoodmandsaur/");
+                val intent = Intent(Intent.ACTION_VIEW, uri);
+                intent.setPackage("com.instagram.android");
+                try {
+                    startActivity(intent);
+                } catch (e: ActivityNotFoundException){
+                    startActivity(Intent(Intent.ACTION_VIEW , uri));
+                }
             }
             R.id.rl_favourite->{
                 drawer_layout!!.closeDrawers()

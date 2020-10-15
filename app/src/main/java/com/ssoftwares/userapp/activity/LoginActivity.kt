@@ -41,11 +41,6 @@ class LoginActivity:BaseActivity() {
                         this@LoginActivity,
                         resources.getString(R.string.validation_email)
                     )
-                } else if (!Common.isValidEmail(edEmail.text.toString())) {
-                    Common.alertErrorOrValidationDialog(
-                        this@LoginActivity,
-                        resources.getString(R.string.validation_valid_email)
-                    )
                 } else if (edPassword.text.toString().equals("")) {
                     Common.alertErrorOrValidationDialog(
                         this@LoginActivity,
