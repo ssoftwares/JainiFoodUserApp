@@ -108,7 +108,7 @@ public class OtpActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String code = "" + numOne.getText().toString() + numTwo.getText().toString() + numThree.getText().toString() + numFour.getText().toString() + numFive.getText().toString() + numSix.getText().toString();
                 if (!code.equals("")) {
-                    progressshow();
+                    Common.INSTANCE.showLoadingProgress(OtpActivity.this);
                     PhoneAuthCredential credential = PhoneAuthProvider.getCredential(phoneVerificationId, code);
                     signInWithPhoneAuthCredential(credential);
                 } else {
@@ -126,12 +126,7 @@ public class OtpActivity extends AppCompatActivity {
                 this,
                 verificationCallbacks);
     }
-    private void progressshow() {
-        dialog = new AlertDialog.Builder(this)
-                .setTitle("Verifying...")
-                .setMessage("Verifying code. Please wait.")
-                .show();
-    }
+
 
     public void codenumber() {
 
@@ -243,8 +238,8 @@ public class OtpActivity extends AppCompatActivity {
                             verify = "true";
                             onSignInClick(userdata);
                         } else {
-                            if (dialog != null)
-                                dialog.dismiss();
+                            Common.INSTANCE.dismissLoadingProgress();
+
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                                 Toast.makeText(OtpActivity.this, "Wrong Code", Toast.LENGTH_SHORT).show();
                             } else if (task.getException() instanceof FirebaseTooManyRequestsException) {
@@ -302,31 +297,29 @@ public class OtpActivity extends AppCompatActivity {
 
     private void onSignInClick(HashMap<String , String> map) {
 
-//        progressshow();
         Call<RestResponse<RegistrationModel>> client = ApiClient.INSTANCE.getGetClient().setRegistration(map);
         client.enqueue(new Callback<RestResponse<RegistrationModel>>() {
             @Override
             public void onResponse(Call<RestResponse<RegistrationModel>> call, Response<RestResponse<RegistrationModel>> response) {
                 if (response.code() == 200){
                     Toast.makeText(OtpActivity.this, "Registration Success", Toast.LENGTH_SHORT).show();
-                    if (dialog != null)
-                        dialog.dismiss();
+                    Common.INSTANCE.dismissLoadingProgress();
                     RestResponse<RegistrationModel> registrationResponse = response.body();
                     if (registrationResponse.getStatus().equals("1")) {
                         successfullDialog(registrationResponse.getMessage());
                     } else if (registrationResponse.getStatus().equals("0")) {
                         Toast.makeText(OtpActivity.this, "Failed: " +  registrationResponse.getMessage(), Toast.LENGTH_LONG).show();
-                        if (dialog != null)
-                            dialog.dismiss();
+                        Common.INSTANCE.dismissLoadingProgress();
+
                         finish();
                     }
                 } else {
                     try {
                        JSONObject object = new JSONObject(response.errorBody().string()) ;
                        Toast.makeText(OtpActivity.this, "Error: " + object.getString("message") , Toast.LENGTH_LONG).show();
-                       if (dialog != null)
-                           dialog.dismiss();
-                       finish();
+                        Common.INSTANCE.dismissLoadingProgress();
+
+                        finish();
                     } catch (IOException | JSONException e) {
                         e.printStackTrace();
                     }

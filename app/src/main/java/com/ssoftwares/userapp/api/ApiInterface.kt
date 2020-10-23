@@ -124,4 +124,7 @@ interface ApiInterface {
     @GET("restaurantslocation")
     fun getCheckStatusRestaurant():Call<SingleResponse>
 
+    @GET("isopen")
+    fun getIsOpenRestaurant():Call<SingleResponse>
+
 }

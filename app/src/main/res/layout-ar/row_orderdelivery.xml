@@ -157,7 +157,6 @@
                     android:layout_marginLeft="@dimen/_10sdp"
                     android:layout_marginRight="@dimen/_10sdp"
                     android:paddingRight="@dimen/_5sdp"
-                    android:text="$80"
                     android:textColor="@color/light_orange"
                     android:textSize="@dimen/_12ssp"
                     tools:ignore="MissingPrefix" />

@@ -448,7 +448,7 @@ object Common {
                     val restResponce: RestResponse<LocationModel> = response.body()!!
                     if(restResponce.getStatus().equals("1")){
                         if(restResponce.getData()!!.getLang()!=null && restResponce.getData()!!.getLat()!=null){
-                            val urlAddress = "http://maps.google.com/maps?q=" + restResponce.getData()!!.getLat() + "," + restResponce.getData()!!.getLang() + "(" + "FoodApp" + ")&iwloc=A&hl=es"
+                            val urlAddress = "http://maps.google.com/maps?q=" + restResponce.getData()!!.getLat() + "," + restResponce.getData()!!.getLang() + "(" + "JainiFood" + ")&iwloc=A&hl=es"
                             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(urlAddress))
                             activity.startActivity(intent)
                         }

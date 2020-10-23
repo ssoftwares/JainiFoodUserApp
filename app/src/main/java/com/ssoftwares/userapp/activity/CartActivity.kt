@@ -74,11 +74,7 @@ class CartActivity : BaseActivity(),GpsStatusDetector.GpsStatusDetectorCallBack 
         }
 
         tvCheckout.setOnClickListener {
-            if(isCheckNetwork(this@CartActivity)){
-                callApiIsOpen()
-            }else{
-                alertErrorOrValidationDialog(this@CartActivity,resources.getString(R.string.no_internet))
-            }
+            startActivity(Intent(this@CartActivity,OrderSummuryActivity::class.java))
         }
     }
 
@@ -397,36 +393,6 @@ class CartActivity : BaseActivity(),GpsStatusDetector.GpsStatusDetectorCallBack 
     override fun onResume() {
         super.onResume()
         Common.getCurrentLanguage(this@CartActivity, false)
-    }
-
-    private fun callApiIsOpen() {
-        showLoadingProgress(this@CartActivity)
-        val call = ApiClient.getClient.getCheckStatusRestaurant()
-        call.enqueue(object : Callback<SingleResponse> {
-            override fun onResponse(call: Call<SingleResponse>, response: Response<SingleResponse>) {
-                if (response.code() == 200) {
-                    val restResponce: SingleResponse = response.body()!!
-                    if (restResponce.getStatus().equals("1")) {
-                        dismissLoadingProgress()
-                        startActivity(Intent(this@CartActivity,OrderSummuryActivity::class.java))
-                    } else if (restResponce.getStatus()!!.equals("0")) {
-                        dismissLoadingProgress()
-                        alertErrorOrValidationDialog(
-                            this@CartActivity,
-                            restResponce.getMessage()
-                        )
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<SingleResponse>, t: Throwable) {
-                dismissLoadingProgress()
-                alertErrorOrValidationDialog(
-                    this@CartActivity,
-                    resources.getString(R.string.error_msg)
-                )
-            }
-        })
     }
 
     override fun onGpsAlertCanceledByUser() {

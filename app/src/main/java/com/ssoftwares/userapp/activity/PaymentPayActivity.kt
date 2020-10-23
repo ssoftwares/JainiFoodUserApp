@@ -117,7 +117,7 @@ class PaymentPayActivity:BaseActivity(),PaymentResultListener {
             options.put("name",getStringPref(this@PaymentPayActivity,userName))
             options.put("description","Food App Payment pay now For Trusted")
             options.put("image", getStringPref(this@PaymentPayActivity,SharePreference.userProfile))
-            options.put("currency","USD")
+            options.put("currency","INR")
             options.put("amount",amount.toString())
             val prefill = JSONObject()
             prefill.put("email",getStringPref(this@PaymentPayActivity,userEmail))
